@@ -1,0 +1,96 @@
+27-Mar-2020 10:20:03	 distributed	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:true	 returnPmu:true
+MC:		 100000
+J:		 1.713420
+mean(Jb):	 1.713996
+var(Jb):	 0.000037
+Time:	 0.734920
+======================================================================================
+29-Mar-2020 15:07:35	 decentralized	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:true	 returnPmu:true
+MC:		 100000
+J:		 2.494630
+mean(Jb):	 2.495112
+var(Jb):	 0.000058
+Time:	 0.385705
+======================================================================================
+29-Mar-2020 20:44:00	 decentralized	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:false	 returnPmu:false
+MC:		 10
+J:		 3.610596
+mean(Jb):	 3.641162
+var(Jb):	 0.730007
+Time:	 0.445824
+======================================================================================
+29-Mar-2020 20:53:39	 distributed	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:false	 returnPmu:false
+MC:		 10
+J:		 2.884828
+mean(Jb):	 2.898915
+var(Jb):	 0.709363
+Time:	 0.951681
+======================================================================================
+30-Mar-2020 01:15:01	 decentralized	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:false	 returnPmu:false
+MC:		 100000
+J:		 2.876025
+mean(Jb):	 2.876506
+var(Jb):	 0.000040
+Time:	 0.149623
+======================================================================================
+30-Mar-2020 08:48:12	 distributed	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:false	 returnPmu:false
+MC:		 100000
+J:		 1.852254
+mean(Jb):	 1.853098
+var(Jb):	 0.000037
+Time:	 0.420853
+======================================================================================
+30-Mar-2020 10:41:01	 distributed	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:true	 returnPmu:true
+MC:		 100000
+J:		 1.690753
+mean(Jb):	 1.691440
+var(Jb):	 0.000046
+Time:	 0.487097
+======================================================================================
+HIAFD - Notebook
+30-Mar-2020 12:41:08	 distributed	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:true	 returnPmu:true
+MC:		 100000
+J:		 1.690753
+mean(Jb):	 1.691440
+var(Jb):	 0.000046
+Time:	 0.755794
+======================================================================================
+DECAFD PASSIVE
+30-Mar-2020 14:29:31	 decentralized	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:false	 returnPmu:false
+MC:		 100000
+J:		 3.915279
+mean(Jb):	 3.915530
+var(Jb):	 0.000044
+Time:	 0.102014
+======================================================================================
+CDC2020
+30-Mar-2020 17:48:30	 decentralized	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:true	 returnPmu:true
+MC:		 100000
+J:		 2.494630
+mean(Jb):	 2.495112
+var(Jb):	 0.000058
+Time:	 0.237565
+======================================================================================
+DISAFD PASSIVE
+30-Mar-2020 22:26:58	 distributed	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:false	 returnPmu:false
+MC:		 100000
+J:		 1.500695
+mean(Jb):	 1.501087
+var(Jb):	 0.000021
+Time:	 0.388009
+======================================================================================
+HIAFD PASSIVE
+31-Mar-2020 04:12:44	 distributed	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:true	 returnPmu:true
+MC:		 100000
+J:		 1.303399
+mean(Jb):	 1.303863
+var(Jb):	 0.000020
+Time:	 0.429718
+======================================================================================
+31-Mar-2020 07:27:35	 distributed	 design:GPB2	 on-line:GPB2	 approxMethod:Bayes	 centralDecision:true	 returnPmu:true
+MC:		 100000
+J:		 1.303399
+mean(Jb):	 1.303863
+var(Jb):	 0.000020
+Time:	 0.642234
+======================================================================================

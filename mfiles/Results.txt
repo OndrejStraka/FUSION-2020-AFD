@@ -1,0 +1,18 @@
+Weakly coupled
+
+ H:distributed,GlobalDecision:true,Feedback:true	 MC simulation #:100000
+Elapsed time is 73491.988396 seconds.
+GLOB AVG: 1.713420
+MC estimate of criterion value: 1.713420
+ans = 1.7140
+ans = 3.7162e-05
+
+
+Tightly coupled
+H:decentralized,GlobalDecision:true,Feedback:true	 MC simulation #:100000
+Elapsed time is 38570.527528 seconds.
+GLOB AVG: 2.494630
+MC estimate of criterion value: 2.494630
+ans = 2.4951
+ans = 5.8448e-05
+

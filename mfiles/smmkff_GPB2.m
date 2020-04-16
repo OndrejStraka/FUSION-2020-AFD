@@ -47,6 +47,7 @@ function estimate = smmkff_GPB2(y,estimate,model,computeOnlyPredictiveOutput)
 
       % Compute non-normalized filtering probability of sequence
       % it's not numerically robust :(
+      % This is computed only for the case when the central node does not feed the probabilities back
       estimate.pmufseq(idx) = normpdfm(y,estimate.ypseq(:,idx),estimate.Pyypseq(:,:,idx)) * estimate.pmupseq(idx);
       estimate.likelihood(idx) = normpdfm(y,estimate.ypseq(:,idx),estimate.Pyypseq(:,:,idx));
     end

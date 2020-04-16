@@ -1,0 +1,42 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+aggregationidx	.\mfiles\aggregationidx.m	/^function subidx = aggregationidx(x,xqtie)$/;"	f
+deaggregationidx	.\mfiles\deaggregationidx.m	/^function x = deaggregationidx(xqtlvl,subidx)$/;"	f
+fm2mcm	.\mfiles\fm2mcm.m	/^function [mfm,Pfm] = fm2mcm(w,m,P)$/;"	f
+gendrnd	.\mfiles\gendrnd.m	/^function x = gendrnd(p,varargin)$/;"	f
+generateinneredges	.\mfiles\generateinneredges.m	/^function innerEdges = generateinneredges(states)$/;"	f
+kff	.\mfiles\kff.m	/^function [xf,Pxxf,yp,Pyyp] = kff(y,xp,Pxxp,C,Sigmav)$/;"	f
+kfp	.\mfiles\kfp.m	/^function [xp,Pxxp] = kfp(u,xf,Pxxf,A,B,Sigmaw)$/;"	f
+linidx2subidx	.\mfiles\linidx2subidx.m	/^function subidx = linidx2subidx(siz,linidx,checkRanges)$/;"	f
+lssmmkff_GPB1	.\mfiles\lssmmkff_GPB1.m	/^function estimate = lssmmkff_GPB1(y,estimate,model,nodeStates)$/;"	f
+lssmmkff_GPB2	.\mfiles\lssmmkff_GPB2.m	/^function [estimate,estimateLSS] = lssmmkff_GPB2(y,estimate,estimateLSS,model,LSS,nodeStates)$/;"	f
+lssmmkff_GPB2	.\mfiles\lssmmkff_GPB2_pure_dis.m	/^function estimate = lssmmkff_GPB2(y,estimate,model,nodeStates)$/;"	f
+lssmmkff_IMM	.\mfiles\lssmmkff_IMM.m	/^function estimate = lssmmkff_IMM(y,estimate,model,nodeStates,approxMETHOD)$/;"	f
+lssmmkfp_1D_GPB1	.\mfiles\lssmmkfp_1D_GPB1.m	/^function estimate = lssmmkfp_1D_GPB1(u,estimate,model,nodeStates)$/;"	f
+lssmmkfp_1D_GPB2	.\mfiles\lssmmkfp_1D_GPB2.m	/^function [estimate,estimateLSS] = lssmmkfp_1D_GPB2(u,estimate,estimateLSS,model,LSS,nodeStates)$/;"	f
+lssmmkfp_1D_GPB2	.\mfiles\lssmmkfp_1D_GPB2_pure_dis.m	/^function estimate = lssmmkfp_1D_GPB2(u,estimate,model,nodeStates)$/;"	f
+mVut	.\mfiles\mVut_1D.m	/^function mV_sa = mVut(innerEdges,V,xi,u,transition_h,disturbance_gs_h,kappa)$/;"	f
+mmmerge	.\mfiles\mmmerge.m	/^function [pmuseqmerged,xseqmerged,Pxxseqmerged] = mmmerge(pmuseq,xseq,Pxxseq,nXmerged)$/;"	f
+mynoise_1D_DED	.\mfiles\mynoise_1D.m	/^function [w,y,Pyy] = mynoise_1D_DED(xi,u,model)$/;"	f
+mynoise_GPB1_1D	.\mfiles\mynoise_GPB1_1D.m	/^function [w,y,Pyy] = mynoise_GPB1_1D(xi,u,model)$/;"	f
+myphi_GPB1	.\mfiles\myphi_GPB1.m	/^function xiNext = myphi_GPB1(xi,u,y,model)$/;"	f
+myphi_GPB1_1D	.\mfiles\myphi_GPB1_1D.m	/^function xiNext = myphi_GPB1_1D(xi,u,y,model)$/;"	f
+myphi_GPB2	.\mfiles\myphi_GPB2.m	/^function xiNext = myphi_GPB2(xi,u,y,model)$/;"	f
+myphi_GPB2_1D	.\mfiles\myphi_GPB2_1D.m	/^function [xiNext,varargout] = myphi_GPB2_1D(xi,u,y,model)$/;"	f
+myphi_IMM	.\mfiles\myphi_IMM.m	/^function xiNext = myphi_IMM(xi,u,y,model)$/;"	f
+myphi_IMM_1D	.\mfiles\myphi_IMM_1D.m	/^function xiNext = myphi_IMM_1D(xi,u,y,model)$/;"	f
+normpdfm	.\mfiles\normpdfm.m	/^function f = normpdfm(x,m,Sigma)$/;"	f
+normrndm	.\mfiles\normrndm.m	/^function x = normrndm(mx,Px,m)$/;"	f
+ps2pfs	.\mfiles\ps2pfs.m	/^function [pmuseqnew, idx] = ps2pfs(pmuseq,n)$/;"	f
+sigmapoints	.\mfiles\sigmapoints.m	/^function [X,w,zmX] = sigmapoints(mx,Pxx,varargin)$/;"	f
+smmkff_GPB2	.\mfiles\smmkff_GPB1.m	/^function estimate = smmkff_GPB2(y,estimate,model,computeOnlyPredictiveOutput)$/;"	f
+smmkff_GPB2	.\mfiles\smmkff_GPB2.m	/^function estimate = smmkff_GPB2(y,estimate,model,computeOnlyPredictiveOutput)$/;"	f
+smmkff_IMM	.\mfiles\smmkff_IMM.m	/^function estimate = smmkff_IMM(y,estimate,model,computeOnlyPredictiveOutput)$/;"	f
+smmkff_nx1nz1	.\mfiles\smmkff_1D.m	/^function estimate = smmkff_nx1nz1(y,estimate,model,computeOnlyPredictiveOutput)$/;"	f
+smmkfp	.\mfiles\smmkfp.m	/^function estimate = smmkfp(u,estimate,model)$/;"	f
+subidx2linidx	.\mfiles\subidx2linidx.m	/^function linidx = subidx2linidx(siz,subidx,checkRanges)$/;"	f
+valueiteration_discraggr2	.\mfiles\valueiteration_discraggr2.m	/^function [gamma,Q,V,iterationConvergence,iterationTimes] = valueiteration_discraggr2(states,innerEdges,inputs,mL_h,mV_h,isStateAdmissible_h,isInputAdmissible_h,lambda,varargin)$/;"	f
