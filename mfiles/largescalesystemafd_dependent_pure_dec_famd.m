@@ -120,8 +120,8 @@ nNode = length(node);
 %lambda = 0.98;
 lambda = 0.9;
 
-%architecture = 'decentralized';
-architecture = 'distributed';
+architecture = 'decentralized';
+%architecture = 'distributed';
 
 %mergeMethod = 'GPB1';
 %mergeMethod = 'IMM';
@@ -138,8 +138,8 @@ debug = false;
 maxIteration = 70;
 
 % CENTRAL NODE SETTINGS
-centralDecision = true;
-returnPmuToLocalnodes = true;
+centralDecision = false;
+returnPmuToLocalnodes = false;
 LSS.returnPmuToLocalnodes = returnPmuToLocalnodes;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SIMULATION SETTINGS
 % Time horizon

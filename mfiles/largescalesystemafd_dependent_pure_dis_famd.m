@@ -138,8 +138,8 @@ debug = false;
 maxIteration = 70;
 
 % CENTRAL NODE SETTINGS
-centralDecision = true;
-returnPmuToLocalnodes = true;
+centralDecision = false;
+returnPmuToLocalnodes = false;
 LSS.returnPmuToLocalnodes = returnPmuToLocalnodes;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SIMULATION SETTINGS
 % Time horizon
@@ -437,7 +437,7 @@ for imc = 1:nmc
       case 'distributed'
         % Time update (only for k>1)
         if k == 1
-          estimateLSS{1,k}.pmupseq = kron(estimate{1}.pmupseq,estimate{2}.pmupseq); %(1,1) , (1,2) , (2,1) , (2,2) % combine local predictions
+          %estimateLSS{1,k}.pmupseq = kron(estimate{1}.pmupseq,estimate{2}.pmupseq); %(1,1) , (1,2) , (2,1) , (2,2) % combine local predictions
         else % time update in k=2,3,... only
           switch mergeMethod
             %case 'GPB1'
@@ -445,7 +445,8 @@ for imc = 1:nmc
             %case 'IMM'
               %estimate(:,k) = lssmmkfp_1D_GPB2(u(:,k-1),estimate(:,k-1),node,nodeStates);
             case 'GPB2'
-              [estimate(:,k),estimateLSS(:,k)] = lssmmkfp_1D_GPB2(u(:,k-1),estimate(:,k-1),estimateLSS(:,k-1),node,LSS,nodeStates);
+              %[estimate(:,k),estimateLSS(:,k)] = lssmmkfp_1D_GPB2(u(:,k-1),estimate(:,k-1),estimateLSS(:,k-1),node,LSS,nodeStates);
+              estimate(:,k) = lssmmkfp_1D_GPB2_pure_dis(u(:,k-1),estimate(:,k-1),node,nodeStates);
             otherwise
               error('unknown merge method')
           end
@@ -457,7 +458,8 @@ for imc = 1:nmc
           %case 'IMM'
             %estimate(:,k) = lssmmkff_IMM(y(:,k),estimate(:,k),node,nodeStates);
           case 'GPB2'
-            [estimate(:,k),estimateLSS(:,k)] = lssmmkff_GPB2(y(:,k),estimate(:,k),estimateLSS(:,k),node,LSS,nodeStates);
+            %[estimate(:,k),estimateLSS(:,k)] = lssmmkff_GPB2(y(:,k),estimate(:,k),estimateLSS(:,k),node,LSS,nodeStates);
+            estimate(:,k) = lssmmkff_GPB2_pure_dis(y(:,k),estimate(:,k),node,nodeStates);
           otherwise
             error('unknown merge method')
         end

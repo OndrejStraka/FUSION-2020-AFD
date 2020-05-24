@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (MiKTeX 2.9.7380 64-bit)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: article.aux
+The style file: IEEEtran.bst
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: literatura.bib
+Database file #2: literatura_apps.bib
+Database file #3: literatura_lss_c.bib
+Database file #4: literatura_lss_fd.bib
+Database file #5: literatura_ivo.bib
+Database file #6: literatura_new.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 17 entries,
+            4087 wiz_defined-function locations,
+            948 strings with 10904 characters,
+and the built_in function-call counts, 11474 in all, are:
+= -- 855
+> -- 250
+< -- 86
++ -- 128
+- -- 41
+* -- 555
+:= -- 1672
+add.period$ -- 34
+call.type$ -- 17
+change.case$ -- 16
+chr.to.int$ -- 213
+cite$ -- 17
+duplicate$ -- 861
+empty$ -- 1074
+format.name$ -- 56
+if$ -- 2706
+int.to.chr$ -- 0
+int.to.str$ -- 17
+missing$ -- 149
+newline$ -- 74
+num.names$ -- 17
+pop$ -- 393
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 856
+stack$ -- 0
+substring$ -- 481
+swap$ -- 632
+text.length$ -- 15
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 17
+warning$ -- 0
+while$ -- 46
+width$ -- 19
+write$ -- 169

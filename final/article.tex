@@ -175,7 +175,7 @@ The FD algorithms of the \textit{passive} approach simply monitor the system mea
 They have been extensively studied over the past decades and are common in the industrial system monitoring~\cite{Simani2003:b,Blanke2016:b}. 
 In the last decade, the \textit{active} approach has attracted attention~\cite{Niemann2005:cp:ACC,Raimondo2016:cp:CDC}. 
 The FD algorithms of the active approach, in addition to system quantities monitoring, generate an input signal to excite the monitored system. 
-As a consequence of a suitable excitation, more information  is obtained, which can help to detect faults that may be challenging to detect using the passive FD\@.
+As a consequence of a suitable excitation, more information  is obtained, which can help to detect faults that may be challenging to detect using the passive FD\@. A survey of AFD methods has been published recently in~\cite{HeMe:19}.
 
 In~\cite{Puncochar2019:cp:ACC}, a new AFD framework for stochastic LSSs was introduced with three \emph{architectures} -- centralized, decentralized, and distributed. 
 The paper assumed perfect measurements of continuous states of all subsystems to be available to the corresponding AFD nodes. 
@@ -300,7 +300,7 @@ where $p_{\nth{\bfx}_0}$ is a known PDF of the initial continuous part of the lo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{AFD Problem Formulation}\label{sec:AFD_problem_formulation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The AFD aims to design functions that transform the complete available information to a decision about the faults (subsystem models) and to an input, which role is to excite the system to improve the detection quality. 
+The AFD aims to design functions that transform the complete available information to a decision about the faults (subsystem models) and to an input, the role of which is to excite the system to improve the detection quality. 
 The active fault detector~$\Delta$ can be described at a time instant $k\in\mcT$ as
 \begin{align}\label{ali:AFDsystem}
   \Delta:\quad
@@ -656,6 +656,8 @@ where both subsystems have two models with% the following matrices
   \iind{\bfA}(2) & = [0.05\ 0.775], &\!\! \!\! \iind{B}(2) & = 0.15, & \!\!\! \iind{F}(2) & = \sqrt{0.002},\\
                  &&\!\!\!  \iind{C}(2) & = 1,   & \!\! \iind{H}(2) & = 0.01.
 \end{align*}
+i.e. the dynamics matrix of the LSS is for $\ist{\mu}_k=i$ and  $\iind{\mu}_k=j$ is
+$ \bfA(i,j)=\begin{bsmallmatrix}\ist{\bfA}(i)\\\iind{\bfA}(j)\end{bsmallmatrix}$.
 The transition probabilities between the models for each subsystem are given in Table~\ref{tab:modeTran}, where~$\nth{\mu}_k=1$ represents the fault-free behavior of the subsystem and~$\nth{\mu}_k=2$ represents the faulty behavior. 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.2}
