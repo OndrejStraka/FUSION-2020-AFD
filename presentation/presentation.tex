@@ -1,0 +1,715 @@
+\documentclass[usenames,dvipsnames]{beamer}
+%\documentclass[handout]{beamer}
+%\usepackage{etex}
+\usepackage[scaled=0.92]{helvet}	% set Helvetica as the sans-serif font
+\renewcommand{\rmdefault}{ptm}		% set Times as the default text font
+\usepackage{xcolor}
+%\usepackage{definice}
+\usepackage{mathptmx}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{tikz}
+\input{notation_def}
+\usepackage{slashbox}
+\usepackage{booktabs,hhline}
+%\usepackage{xcolor}%,colortbl}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{siunitx}
+%\usetikzlibrary{arrows,calc,fadings,positioning,shapes.arrows,decorations.pathreplacing,calc}
+\usetikzlibrary{decorations.markings,shadows.blur,fit,arrows,calc,fadings,positioning,shapes.arrows,shadows,backgrounds,fit}
+\usepackage[beamer,customcolors]{hf-tikz}
+\hfsetfillcolor{blue!20}
+\hfsetbordercolor{blue!50}
+%\usepackage{pgf}
+%\usepackage{pgfplots}
+%\usetikzlibrary{shapes.arrows,decorations.pathmorphing,positioning,datavisualization.formats.functions,calc,fadings,decorations.pathreplacing,mindmap,trees,positioning,arrows,shapes,shadows,arrows,backgrounds,fit,plotmarks}
+\let\Bbbk\relax
+\let\jmath\relax
+\let\hbar\relax
+\usepackage[subscriptcorrection,slantedGreek,nofontinfo,mtphrb,mtpscr]{mtpro2_fix}
+%\usepackage{lmodern}
+\usepackage{beamerhighlight}
+
+\setbeamertemplate{navigation symbols}{}
+\mode<beamer>{
+  \setbeamertemplate{background canvas}[vertical shading][bottom=black!15,middle=black!5,top=black!15]
+  \usetheme{metropolis}
+  \definecolor{UBCblue}{rgb}{0.04706, 0.13725, 0.46667} % UBC Blue (primary)
+  \usecolortheme[named=UBCblue]{structure}
+}
+\mode<handout>{
+  \usetheme{default}
+}
+\setbeamercovered{transparent}
+
+\usepackage{algorithm2e}
+%----------------------------------
+% set algorithm2e styles
+%----------------------------------
+% change algorithm font size
+\SetAlFnt{\footnotesize}
+
+% change algorithm caption style
+\newcommand{\xAlCapSty}[1]{\small\sffamily\bfseries\MakeUppercase{#1}}
+\SetAlCapSty{xAlCapSty}
+
+% comment style (algorithms)
+\newcommand{\xCommentSty}[1]{\scriptsize\ttfamily\textcolor{blue}{#1}}
+\SetCommentSty{xCommentSty}
+
+% change line number style
+\newcommand\mynlfont[1]{\scriptsize\sffamily{#1}}
+\SetNlSty{mynlfont}{}{} 
+
+% don't print semicolon
+\DontPrintSemicolon
+
+% ruled algorithm
+\RestyleAlgo{algoruled}
+
+\makeatletter
+\newcommand{\removelatexerror}{\let\@latex@error\@gobble}
+\makeatother
+\tikzset{
+  every overlay node/.style={
+    %draw=black,fill=white,rounded corners,
+    anchor=north west, inner sep=0pt,
+  },
+}
+
+\graphicspath{{img/}}
+
+\setbeamertemplate{footline}
+{%
+  \hfill%
+  \includegraphics[width=1.5cm]{img/zcu_en_cmyk.pdf}
+}
+
+%\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\tikzset{
+	sys/.style={rectangle,minimum height=1.1cm,minimum width=2.1cm,rounded corners,draw=black,very thick,align=center},
+	curvedlink/.style={to path={let \p1=(\tikztostart.east), \p2=(\tikztotarget.west),\n1= {abs(\y2-\y1)/4} in (\p1) arc(90:-90:\n1) -- ([yshift=2*\n1]\p2) arc (90:270:\n1)}}
+}
+\tikzstyle{wrlss}=[rectangle,thick,minimum size=1.8cm,draw=gray!80,fill=gray!10,blur shadow     = {shadow blur steps = 15}]
+\tikzstyle{mlss}=[rectangle,thick,minimum size=1.8cm,draw=black,fill=white=!90,fill opacity=0.5]
+\tikzstyle{wr}=[rectangle,thick,minimum size=1cm,draw=gray!80,fill=gray!20]
+\tikzstyle{rr}=[rectangle,thick,minimum size=1cm,draw=gray!80,fill=red!20,blur shadow={shadow blur steps = 15}]
+\tikzstyle{yr}=[rectangle,thick,minimum size=1cm,draw=gray!80,fill=yellow!40,blur shadow={shadow blur steps = 15}]
+\tikzstyle{pr}=[rectangle,thick,minimum size=1cm,draw=gray!80,fill=purple!60,blur shadow={shadow blur steps = 15}]
+\tikzstyle{gr}=[rectangle,thick,minimum size=1cm,draw=gray!80,fill=green!20,blur shadow={shadow blur steps = 15}]
+\tikzstyle{grVecArrow} = [decoration={markings,mark=at position 0.2 with {\arrow{triangle 60[reversed,fill=green!20]}}},double distance=1.4pt, shorten <= 5.5pt, preaction = {decorate}, postaction = {draw,line width=1.4pt, green!20,shorten <= 4.5pt},decoration={markings,mark=at position 1 with {\arrow{triangle 60[fill=green!20]}}}, double distance=1.4pt, shorten >= 4.5pt,  preaction = {decorate},  postaction = {draw,line width=1.4pt, green!20,shorten >= 5.3pt}]
+\tikzstyle{grVecArrow1} = [decoration={markings,mark=at position 0.07 with {\arrow{triangle 60[reversed,fill=green!20]}}},double distance=1.4pt, shorten <= 5.5pt, preaction = {decorate}, postaction = {draw,line width=1.4pt, green!20,shorten <= 4.5pt},decoration={markings,mark=at position 1 with {\arrow{triangle 60[fill=green!20]}}}, double distance=1.4pt, shorten >= 4.5pt,  preaction = {decorate},  postaction = {draw,line width=1.4pt, green!20,shorten >= 5.3pt}]
+\tikzstyle{purVecArrow} = [decoration={markings,mark=at position 0.15 with {\arrow{triangle 60[reversed,fill=purple!20]}}},double distance=1.4pt, shorten <= 5.5pt, preaction = {decorate}, postaction = {draw,line width=1.4pt, purple!20,shorten <= 4.5pt},decoration={markings,mark=at position 1 with {\arrow{triangle 60[fill=purple!20]}}}, double distance=1.4pt, shorten >= 4.5pt,  preaction = {decorate},  postaction = {draw,line width=1.4pt, purple!20,shorten >= 5.3pt}]
+\tikzstyle{purVecArrow1} = [decoration={markings,mark=at position 0.1 with {\arrow{triangle 60[reversed,fill=purple!20]}}},double distance=1.4pt, shorten <= 5.5pt, preaction = {decorate}, postaction = {draw,line width=1.4pt, purple!20,shorten <= 4.5pt},decoration={markings,mark=at position 1 with {\arrow{triangle 60[fill=purple!20]}}}, double distance=1.4pt, shorten >= 4.5pt,  preaction = {decorate},  postaction = {draw,line width=1.4pt, purple!20,shorten >= 5.3pt}]
+\tikzstyle{whiVecArrow} = [thick,decoration={markings,mark=at position 0.2 with {\arrow[semithick]{triangle 60[reversed,fill=white]}}},double distance=1.4pt, shorten <= 3.4pt, preaction = {decorate}, postaction = {draw,line width=1.4pt, white,shorten <= 4.5pt}, decoration={markings,mark=at position 1 with {\arrow[semithick]{triangle 60[fill=white]}}},  double distance=1.4pt, shorten >= 4.5pt,  preaction = {decorate},  postaction  = {draw,line width=1.4pt, white,shorten >= 5.0pt}]
+  
+\pgfdeclarelayer{back}
+\pgfsetlayers{back,main}
+
+\def\zeroth{\prescript{0\!}{}}
+\def\ist{\prescript{1\!}{}}
+\def\iind{\prescript{2\!}{}}
+\def\iiird{\prescript{3\!}{}}
+\def\nth{\prescript{n\!}{}}
+\def\ith{\prescript{i\!}{}}
+\def\jth{\prescript{j\!}{}}
+\def\bnth{\prescript{\bar{n}\!}{}}
+\def\Nth{\prescript{N\!}{}}
+\def\bffX{\mathbb{X}}
+%\def\bffX{\mathds{X}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Hierarchical Active Fault Diagnosis for Stochastic Large Scale Systems with Coupled Faults}
+\author{\textbf{Ond\v{r}ej Straka} and Ivo Pun\v{c}och\'{a}\v{r}\\\small 
+\textbf{straka30@kky.zcu.cz}, ivop@kky.zcu.cz}
+\institute{University of West Bohemia\\
+Pilsen, Czech Republic}
+\date{FUSION 2020,\\ July 6--9, 2020}
+\begin{document}
+\frame{\titlepage}
+\begin{frame}\frametitle{Active vs. Passive Fault Diagnosis}
+ \begin{tikzpicture}
+    %\node [sys,fill=red!15,draw=red!50] (systemp) {System};
+    %\node [sys,fill=brown!15,draw=brown!50,minimum width=4cm] at ($(systemp)+(4.5,0)$) (pfd) {Passive Fault Detector};
+    %\draw[thick,->] ($(systemp.east)+(0,0)$) -- ($(pfd.west)+(0,0)$) node [above,midway] {Data};
+    %\draw[thick,->] ($(pfd.east)+(0,0)$) -- ($(pfd.east)+(1.8,0)$) node [above,midway] {Decision};
+
+    %\begin{pgfonlayer}{back}
+    %\draw[dashed,fill=black!5] ($(systemp.north west) + (-3mm,3mm)$) rectangle ($(pfd.south east)+(2.1,-3mm)$);
+    %\end{pgfonlayer}
+   \begin{scope}
+    \node [sys,fill=blue!15,draw=blue!50] (system) {System};
+    \node[sys,fill=red!15,draw=red!50,minimum width=4cm] at ($(system)+(4.5,0)$) (afd) {Passive Fault Detector};
+    \draw[thick,->] ($(system.east)+(0,0.3)$) -- ($(afd.west)+(0,0.3)$) node [above,midway] {Data};
+    \draw[thick,->] ($(afd.east)+(0,0)$) -- ($(afd.east)+(1.8,0)$) node [above,midway] {Decision};
+    \begin{pgfonlayer}{back}
+      \draw[dashed,fill=black!5] ($(system.north west) + (-3mm,3mm)$) rectangle ($(afd.south east)+(2.1,-3mm)$);
+    \end{pgfonlayer}
+   \end{scope}
+   \begin{scope}[yshift=-4cm]
+    \node [sys,fill=blue!15,draw=blue!50] (system) {System};
+    \node[sys,fill=red!15,draw=red!50,minimum width=4cm] at ($(system)+(4.5,0)$) (afd) {Active Fault Detector};
+    \draw[thick,->] ($(system.east)+(0,0.3)$) -- ($(afd.west)+(0,0.3)$) node [above,midway] {Data};
+    \draw[thick,->] ($(afd.east)+(0,0)$) -- ($(afd.east)+(1.8,0)$) node [above,midway] {Decision};
+    \draw[thick,->]  ($(afd.west)+(0,-0.3)$)  -- node [below,midway] {Excitation} ($(system.east)+(0,-0.3)$);
+    \begin{pgfonlayer}{back}
+      \draw[dashed,fill=black!5] ($(system.north west) + (-3mm,3mm)$) rectangle ($(afd.south east)+(2.1,-3mm)$);
+    \end{pgfonlayer}
+   \end{scope}
+  %\only<3>{\end{scope}}
+
+    %\visible<3>{
+      %\node[sys,below=2cm of system,fill=red!10,xshift=1cm] (rg) {Residue generator};
+      %\node[left=1.6cm of rg] (data) {};
+      %\node[sys,right=1.5cm of rg,fill=red!10] (dg) {Decision generator};
+      %\node[sys,below=1cm of dg,fill=red!10](ig) {Input signal generator};
+      %\node[left=6cm of ig] (excitation) {};
+      %\node[right=1.5 cm of dg] (decision) {};
+      %\draw[thick,->] (data) -- node[above] {Data} (rg);
+      %\draw[thick,->] (rg) -- node[above] {Residue} (dg);
+      %\draw[thick,->] (dg) -- node[above] {Decision} (decision);
+      %\draw[thick,->] (ig) -- node[above,xshift=-2cm] {Excitation} (excitation);
+      %\draw[thick,->] (ig) -| (rg);
+      %\draw[thick,->] ($(rg.west) +(-2mm,0)$) -- +(0,-1cm) -| (ig.north);
+      %\draw[fill] ($(rg.west) +(-2mm,0)$) circle (1.5pt);
+      %\draw[fill] (ig-|rg) circle (1.5pt);
+      %\begin{pgfonlayer}{back}
+        %\draw<3>[fill=red!15,draw=red!50,thick,rounded corners,very thick] ($(rg.north west) + (-3mm,3mm)$) rectangle ($(ig.south east)+(3mm,-3mm)$);
+        %\draw<3>[fill=red!3,draw=red!30] (afd.south west) -- ($(rg.north west) +
+          %(-3mm,3mm)$) -- ($(dg.north east) + (5mm,3mm)$) -- (afd.south east);
+    %\end{pgfonlayer}}
+  \end{tikzpicture} 
+\end{frame}
+\begin{frame}
+  \frametitle{Large Scale System, Multiple Model Framework -- Illustration}
+  \vfill
+  \begin{center}
+    \begin{tikzpicture}[scale=0.7]
+      \node (dix1) [wrlss,label={[yshift=-4.4mm,xshift=-.3mm]\tiny subsystem1
+        ($\ist{\Sigma}$)}] {};
+      \node (dix2) [wrlss,right=1.1cm of
+        dix1,label={[yshift=-4.4mm,xshift=-.3mm]\tiny subsystem2
+        ($\iind{\Sigma}$)}] {};
+      \node (dix3) [wrlss,right=1.1cm of
+        dix2,label={[yshift=-4.4mm,xshift=-.3mm]\tiny subsystemN
+        ($\Nth{\Sigma}$)}] {};
+      \draw[latex-latex,thick] (dix1.35) -- (dix2.145);
+      \draw[latex-latex,thick,dotted] (dix2.35) -- (dix3.145);
+      \draw[latex-latex,thick] (dix1.north) to [out=10,in=170]  (dix3.north);
+
+      \node (ldi) at ($(dix1.north east)+(-1,.7)$) {LSS ($\Sigma$)};
+
+      \node (m11) [mlss,right=-17mm of
+        dix1,yshift=-4mm,label={[yshift=-4.4mm,xshift=-.3mm]\tiny mode1
+        ($\ist{\mu}_k=1$)}]  {};
+      \node (m12) [mlss,right=-17mm of
+        m11,yshift=-4mm,label={[yshift=-4.4mm,xshift=-.3mm]\tiny mode2 ($\ist{\mu}_k=2$)}]  {};
+      \node (m13) [mlss,right=-17mm of
+        m12,yshift=-4mm,label={[yshift=-4.4mm,xshift=-.3mm]\tiny mode3 ($\ist{\mu}_k=3$)}]  {};
+
+      \node (m21) [mlss,right=-17mm of
+        dix2,yshift=-4mm,label={[yshift=-4.4mm,xshift=-.3mm]\tiny mode1
+        ($\iind{\mu}_k=1$)}]  {};
+      \node (m22) [mlss,right=-17mm of
+        m21,yshift=-4mm,label={[yshift=-4.4mm,xshift=-.3mm]\tiny mode2 ($\iind{\mu}_k=2$)}]  {};
+      \node (m23) [mlss,right=-17mm of
+        m22,yshift=-4mm,label={[yshift=-4.4mm,xshift=-.3mm]\tiny mode3 ($\iind{\mu}_k=3$)}]  {};
+      \node (m24) [mlss,right=-17mm of
+        m23,yshift=-4mm,label={[yshift=-4.4mm,xshift=-.3mm]\tiny mode4 ($\iind{\mu}_k=4$)}]  {};
+
+
+      \node (m31) [mlss,right=-17mm of
+        dix3,yshift=-4mm,label={[yshift=-4.4mm,xshift=-.3mm]\tiny mode1
+        ($\Nth{\mu}_k=1$)}]  {};
+      \node (m32) [mlss,right=-17mm of
+        m31,yshift=-4mm,label={[yshift=-4.4mm,xshift=-.3mm]\tiny mode2 ($\Nth{\mu}_k=2$)}]  {};
+      %\node (m33) [mlss,right=-16mm of
+        %m32,yshift=-4mm,label={[yshift=-4.4mm,xshift=-.3mm]\tiny mode3 ($\Nth{\mu}_k=3$)}]  {};
+      \begin{pgfonlayer}{back}
+        \draw[dashed,blue,fill=blue!5] ($(dix1.north west)+(-.3,1)$) rectangle ($(dix3.south east)+(.5,-.5)$);
+      \end{pgfonlayer}
+      \end{tikzpicture}
+    \end{center}
+    \vspace{-3ex}
+    \begin{center}
+      \scalebox{0.8}{\parbox{\textwidth}{%
+          \begin{align*}
+            \hspace{-.5em}
+            \Sigma:\,
+            \underbrace{
+              \begin{bmatrix}
+                \ist{\bfx}_{k+1}\\
+                %\iind{\bfx}_{k+1}\\
+                \vdots\\
+                \Nth{\bfx}_{k+1}
+            \end{bmatrix}}_{\bfx_{k+1}}&\!=\!
+            \underbrace{
+              \begin{bmatrix}
+                \ist{\bff}(\bfx_{k},\ist{\mu}_{k},\ist{\bfu}_{k})\\
+                %\iind{\bff}(\bfx_{k},\iind{\mu}_{k},\iind{\bfu}_{k})\\
+                \vdots\\
+                \Nth{\bff}(\bfx_{k},\Nth{\mu}_{k},\Nth{\bfu}_{k})
+            \end{bmatrix}}_{\bff(\bfx_{k},\bfmu_{k},\bfu_{k})}+
+            \bfF(\bfmu_k)
+            \underbrace{
+              \begin{bmatrix}
+                \ist{\bfw}_{k}\\
+                %\iind{\bfw}_{k}\\
+                \vdots\\
+                \Nth{\bfw}_{k}
+            \end{bmatrix}}_{\bfw_k},\\
+            \hspace{-.5em}
+            \underbrace{
+              \begin{bmatrix}
+                \ist{\bfy}_{k}\\
+                %\iind{\bfy}_{k}\\
+                \vdots\\
+                \Nth{\bfy}_{k}
+            \end{bmatrix}}_{\bfy_{k}}&=
+            \underbrace{
+              \begin{bmatrix}
+                \ist{\bfh}(\ist{\bfx}_{k},\ist{\mu}_{k})\\
+                %\iind{\bfh}(\iind{\bfx}_{k},\iind{\mu}_{k})\\
+                \vdots\\
+                \Nth{\bfh}(\Nth{\bfx}_{k},\Nth{\mu}_{k})
+            \end{bmatrix}}_{\bfh(\bfx_{k},\bfmu_{k})}+
+            \bfH(\bfmu_k)
+            \underbrace{
+              \begin{bmatrix}
+                \ist{\bfv}_{k}\\
+                %\iind{\bfv}_{k}\\
+                \vdots\\
+                \Nth{\bfv}_{k}
+            \end{bmatrix}}_{\bfv_k},
+      \end{align*}}}
+    \end{center}
+  \end{frame}
+\begin{frame}
+  \frametitle{Active Fault Diagnosis -- Problem Formulation}
+  \begin{itemize}
+    \item LSS $\Sigma$ consists of $N$ weakly coupled subsystems
+      $\nth{\Sigma}$:
+      \begin{align*} 
+    \nth{\Sigma}:\quad \nth{\bfx}_{k+1} &= \nth{\bff} \left(
+    \bfx_{k},\nth{\mu}_{k},\nth{\bfu}_{k} \right) +
+    \nth{\bfF}(\nth{\mu}_k)\nth{\bfw}_k\\
+    \nth{\bfy}_{k} &= \nth{\bfh} \left(
+    \nth{\bfx}_{k},\nth{\mu}_{k}\right) + \nth{\bfH}(\nth{\mu}_k)\nth{\bfv}_k
+      \end{align*}
+ \item<2-> Assumptions:
+\begin{enumerate}
+  \item Noises $\nth{\bfw}_k$ and $\nth{\bfv}_k$ white and mutually independent
+  \item Initial mode indices $\nth{\mu}_{0}$ and initial states $\nth{\bfx}_{0}$ are independent
+  \item Mode indices  $\nth{\mu}_{k}$ are modelled as Markov processes\\ %$P(\nth{\mu}_{k+1}|\nth{\mu}_{k})$\\
+      \alert{$\nth{\mu}_{k}=1$} -- fault-free behavior, \alert{$\nth{\mu}_{k}\in\{2,\ldots,\nth{M}\}$} -- faulty behavior
+\end{enumerate}
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Dependent Faults}
+  \begin{itemize}
+    \item Model indices assumptions
+      \begin{align*}
+      \hspace*{-3em}
+        \Pr(\bfmu_{k+1}|\bfmu_{k})=
+        \begin{cases}
+        \prod_{n=1}^N\Pr(\nth{\mu}_{k+1}|\nth{\mu}_{k}) & \text{\tiny in~Straka, Pun\v{c}och\'{a}\v{r} (2019)}\\
+                                                          %&\text{or}\\
+          \prod_{n=1}^N\Pr(\nth{\mu}_{k+1}|\bfmu_{k}) & \text{\tiny in~Straka, Pun\v{c}och\'{a}\v{r} (2020)}
+        \end{cases}
+      \end{align*}
+    \item Insufficient in some cases as the faults in different subsystems tend to appear \alert{simultaneously} or even \alert{system-wide faults} may emerge.
+    \item This behavior can be formally described as dependent faults.
+    \item \alert{Goal of the paper: design AFD for dependent faults}
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Active Fault Diagnosis -- Problem Formulation}
+  \begin{itemize}[<+->]
+    \item AFD system:
+      \begin{align*}
+  \Delta:\quad
+  \begin{bmatrix}
+    \bfd_{k}\\
+    \bfu_{k}
+  \end{bmatrix} = 
+  %\bfrho_{k}\left(\bfI_{0}^{k}\right) =
+  \begin{bmatrix}
+    \bfsigma_{k}\left( \bfI_0^k\right)\\
+    \bfgamma_{k}\left(\bfI_{0}^{k}\right)
+  \end{bmatrix},
+\end{align*}
+where $\bfI_0^k\triangleq[\bfy_{0}^{k},\bfu_{0}^{k-1}]$ is the information available at $k$
+    \item AFD goal: generate $\bfd_k$ and $\bfu_k$ to minimize discounted
+      criterion
+      \begin{align*} 
+        J(\bfsigma_{0}^{\infty},\bfgamma_{0}^{\infty}) = \lim_{F\to\infty} \mean \left\{ \sum_{k=0}^{F} \eta^{k} L^{\mathrm{d}}(\bfmu_{k},\bfd_{k})\right\}
+      \end{align*}
+      \item Example of cost function
+\begin{align*}
+L^{\mathrm{d}}(\bfmu_{k},\bfd_{k}) = \sum_{n=1}^{N} \nth{L}^{\mathrm{d}} \left(\nth{\mu}_{k},\nth{d}_{k} \right),
+\end{align*}
+where $\nth{L}^{\mathrm{d}}$ penalizes discrepancy between $\nth{\mu}_{k}$ and $\nth{d}_{k}$ (missed detections, false alerts, incorrect fault identifications)
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{General Approach to AFD design}
+  \begin{block}{AFD algorithm stages:}
+    \begin{enumerate}
+      \item off-line: design of the excitation input and decision generators
+      \item on-line: state estimation and utilization of the generators
+    \end{enumerate}
+  \end{block}
+  \uncover<2->{
+   \textbf{Solution:} adopt dynamic programming and find Bellman function 
+  }
+  \uncover<3>{
+  \begin{block}{Dim. of $\bfI_0^k$ increases with $k\rightarrow \infty$  $\implies$ problem reformulation:}
+    \begin{itemize} 
+      \item unknown system state $\bfs_k= [\bfx^{\T}_{k}, \mu_{k}]^{\T}$
+      \item recast the \textbf{imperfect state
+        information model} (unknown $\bfs_k$) to a \textbf{perfect state information model} with a new (known) \alert{information state $\bfxi_{k}$}
+      \item $\bfxi_k$ consists of sufficient statistics related to $p(\bfs_k|\bfI_0^k)$ obtained by an estimator
+    \end{itemize}
+  \end{block}
+}
+\end{frame}
+%\begin{frame}
+  %\frametitle{Problem Reformulation}
+  %\begin{center}
+    %\begin{tikzpicture}
+		%% Perfect state information model
+      %\node [sys,fill=gray!40, minimum height = 3cm, minimum width = 4.8cm] (psim){};
+      %\node [anchor=north west,inner sep=2pt,font=\footnotesize] at (psim.north west) {Perfect state information model};
+		%% System
+      %\node [wr,minimum height=1.1cm,minimum width=2.1cm] at ( $(psim.north)+(0,-0.9)$ ) (system) {System };
+      %\node [anchor=south east,inner sep=1pt] at (system.south east) {$\bfs_{k} =[\bfx_{k},\mu_{k}]$};
+		%% Estimator
+      %\node [wr,minimum height=1.1cm,minimum width=2.1cm,below=0.3 of system, align=center] (estimator) {State \\ estimator};
+		%% Input
+      %\draw[very thick,->] ($(system.west)+(-2.0,0)$) node[above] {$\bfu_{k}$} -- (system.west);
+      %\draw[very thick,->] ($(system.west)+(-0.75,0)$)  |- ($(estimator.west)+(0,-0.2)$);
+		%% Output
+      %\draw[very thick,->] ($(system.east)+(0,0)$)  -- ($(system.east)+(1,0)$) node[above, midway] {$\bfy_{k}$} -- ($(system.east)+(1,-0.7)$) -- ($(system.east)+(-2.5,-0.7)$) |- ($(estimator.west)+(0,0.2)$);
+		%% Hyper state
+      %\draw[very thick,->] (estimator.east)  -- ($(estimator.east)+(2.2,0)$) node[above] {$p(\bfs_{k}|\bfI_{0}^{k})$};
+    %\end{tikzpicture}
+  %\end{center}
+  %State estimator -- Bayesian Recursive Relations
+    %\begin{center}
+      %\begin{tikzpicture}
+	%\node[text width=2cm] at (0,0) (predictivek) {$p (\bfs_{k} \vert
+    %\bfI_{0}^{k})$\\as $\bfxi_k$};
+	%\node[text width=2cm] at (7,0) (predictivekp1) {$p (
+		%\bfs_{k+1} \vert \bfI_{0}^{k+1} )$\\as $\bfxi_{k+1}$};
+	%\draw[very thick,->] (predictivek) -- (predictivekp1) node[midway,above]
+	%(m) {$\bfphi(\bfxi_k,\bfu_{k},\bfy_{k+1})$};
+	%\draw[thick,->,color=red!60] (2,-3) -- (2,0) node[midway,rotate=90, above]
+	%{$\textcolor{red!60}{p\left(\bfs_{k+1}|\bfs_{k},\bfu_{k}\right)}$};
+	%\draw[thick,->,color=red!60] (2.7,-3) -- (2.7,0) node[midway,rotate=90, above]
+	%{$\textcolor{red!60}{p\left(\bfy_{k+1}|\bfs_{k+1}\right)}$};
+	%\draw[thick,->,color=blue!60] (4.3,-3) -- (4.3,0) node[midway,rotate=90, above]
+	%{$\textcolor{blue!60}{\bfu_{k}}$};
+	%\draw[thick,->,color=blue!60] (5,-3) -- (5,0) node[midway,rotate=90, above]
+	%{$\textcolor{blue!60}{\bfy_{k+1}}$};
+      %\end{tikzpicture}
+    %\end{center}
+%\end{frame}
+\begin{frame}
+  \frametitle{Design of AFD Systems -- Problem Reformulation -- Illustration}
+  \vspace{-6.5cm}
+  \hspace{1.7cm}
+\begin{tikzpicture}[every node/.style={draw,thick,rounded
+  corners},transform canvas={scale=0.9}]
+\node[fill=blue!20,text width=4.5cm,align=center,draw=none] (tit_l) {\it Imperfect state information\\ problem};
+\node[fill=blue!20,text width=4.5cm,align=center,draw=none,right=3.3cm of tit_l] (tit_r) {\it Perfect state information\\ problem};
+    \node[below=6mm of tit_l,minimum width=3cm,label=95:{System model}] (sm_l)
+    {\begin{minipage}{3cm}\vspace{-3ex}\begin{align*}
+      \bfx_{k+1} &= f (\bfx_{k}, \mu_{k}, \bfu_{k} ) + \bfF_{\mu_{k}}\bfw_{k}, \\ \bfy_{k} &= \bfh (\bfx_{k}, \mu_{k})  + \bfH_{\mu_{k}}\bfv_{k},\\
+      &P(\mu_{k+1}=j|\mu_{k}=i)
+    \end{align*}\end{minipage}};
+
+    \node[below=6mm of tit_r,minimum width=3cm,label=92:{System model and estimator}] (sm_r) {\begin{minipage}{3cm}\vspace{-2ex}\begin{align*} 
+      \bfxi_{k+1} = \bfphi(\bfxi_{k}, \bfu_{k}, \bfy_{k+1}),
+    \end{align*}\end{minipage}};
+
+    \node[below=30mm of tit_l,xshift=1.2cm,minimum height=7mm] (e_l) {Estimate $\bfxi_k$};
+
+    \node[below=40mm of tit_l,minimum width=3cm,minimum height=15mm,label=135:{Criterion}] (cr_l) {\begin{minipage}{3cm}\vspace{-2ex}\begin{align*}
+      J = \lim_{F \to \infty} \mean \left\lbrace \sum^{F}_{k=0} \eta^{k}L^{d}(\mu_{k},d_{k}) \right\rbrace
+    \end{align*}\end{minipage}};
+
+    \node[below=40mm of tit_r,minimum width=3cm,minimum height=15mm,label=135:{Criterion}] (cr_r) {\begin{minipage}{3cm}\vspace{-3ex}\begin{align*}
+      J = \lim_{F \to \infty} \mean \left\lbrace \sum^{F}_{k=0} \eta^{k}L^{d}(\bfxi_{k},d_{k}) \right\rbrace
+    \end{align*}\end{minipage}};
+
+    \node[below=5mm of cr_l,minimum width=3cm,label={[align=left]105:AFD}] (afd_l) {\begin{minipage}{3cm}\vspace{-2ex}\begin{align*}
+      \left[ \begin{matrix}
+  d_{k} \\ \bfu_{k}
+      \end{matrix} \right]
+      = \bfrho_{k}(\bfI^{k}_{0})
+    \end{align*}\end{minipage}};
+    \node[below=5mm of cr_r,minimum width=3cm,label={[align=left]105:AFD}] (afd_r) {\begin{minipage}{3cm}\vspace{-2ex}\begin{align*}
+      \left[ \begin{matrix}
+  d_{k} \\ \bfu_{k}
+      \end{matrix} \right]
+      = \bar{\bfrho}_{k}(\bfxi_{k})
+    \end{align*}\end{minipage}};
+    \draw[very thick,dashed,->] (sm_l) -- (cr_l);
+    \draw[very thick,dashed,->] (cr_l) -- (afd_l);
+    \draw[very thick,dashed,->] (e_l.north|-sm_l.south) -- (e_l);
+    \draw[very thick,dashed,->] (sm_r) -- (cr_r);
+    \draw[very thick,dashed,->] (cr_r) -- (afd_r);
+
+\draw[fill=blue!40!green!25,draw=none] ($(tit_l.north east)+(0.3,0)$) rectangle ($(afd_r.south west)+(-1.2,0)$);
+\node [rotate=90,right=1.1cm of e_l,text width=4cm,align=center,xshift=-1.3cm,draw=none] (pr) {\Large Problem\\ reformulation};
+\node[below=3.8cm of pr,single arrow,rounded corners=0pt,minimum
+width=1.5cm,minimum height=1.5cm,color=white,fill=white,xshift=-6.5mm] (a1) {\Large a};
+\node[above=1.1cm of a1,single arrow,rounded corners=0pt,minimum width=1.5cm,minimum height=1.5cm,color=white,fill=white] (a2) {\Large a};
+\node[above=6.1cm of a1,single arrow,rounded corners=0pt,minimum width=1.5cm,minimum height=1.5cm,color=white,fill=white] (a3) {\Large a};
+    %\draw[fill=blue!40!green!25,draw=none] ($(tit_l.north east)+(0.5,0)$) rectangle ($(afd_r.south west)+(-1.8,0)$);
+    %\node [rotate=90,right=1.9cm of e_l,text width=4cm,align=center,xshift=-1.3cm,draw=none] (pr) {\Large Problem\\ reformulation};
+    %\node[below=3.8cm of pr,single arrow,rounded corners=0pt,minimum
+    %width=1.5cm,minimum height=1.5cm,color=white,fill=white,xshift=-6.5mm] (a1) {\Large a};
+    %\node[above=1.1cm of a1,single arrow,rounded corners=0pt,minimum width=1.5cm,minimum height=1.5cm,color=white,fill=white] (a2) {\Large a};
+    %\node[above=5.9cm of a1,single arrow,rounded corners=0pt,minimum width=1.5cm,minimum height=1.5cm,color=white,fill=white] (a3) {\Large a};
+  \end{tikzpicture}
+\end{frame}
+\begin{frame}
+  \frametitle{Hierarchical AFD Architecture}
+  \begin{itemize}
+    \item off-line design will employ the computationally efficient decentralized architecture
+    \item on-line estimation will work in a hierarchical architecture that has the ability to take into account the faults dependency and the coupling through~$\bfx_k$.
+  \end{itemize}
+\end{frame}
+\begin{frame}
+  \frametitle{Hierarchical AFD Architecture}
+\begin{center}
+    \begin{tikzpicture}[scale=0.7, every node/.style={scale=0.7}]
+      \node (dex1) [wr] {$\ist{\Sigma}$};
+      \node (dex2) [wr,right=1cm of dex1] {$\iind{\Sigma}$};
+      \node (dex3) [wr,right=1cm of dex2] {$\iiird{\Sigma}$};
+
+      \draw[latex-latex,thick] (dex1) -- (dex2);
+      \draw[latex-latex,thick] (dex2) -- (dex3);
+      \draw[latex-latex,thick] (dex1.north) to [out=10,in=170]  (dex3.north);
+      \node (lde) at ($(dex1.north east)+(-1.8,-0.1)$) {LSS ($\Sigma$)};
+      \node (defd1) [gr,below=7mm of dex1] {$\ist{\Delta}$};
+      \node (defd2) [gr,below=7mm of dex2] {$\iind{\Delta}$};
+      \node (defd3) [gr,below=7mm of dex3] {$\iiird{\Delta}$};
+      \draw[whiVecArrow] (defd1) -- (dex1);
+      \draw[whiVecArrow] (defd2) -- (dex2);
+      \draw[whiVecArrow] (defd3) -- (dex3);
+      \node (defd0) [pr,below=15mm of defd2] {$\zeroth{\Delta}$};
+      \draw[grVecArrow] (defd1) -- (defd2);
+      \draw[grVecArrow] (defd2) -- (defd3);
+      \draw[grVecArrow1] (defd1.-45) to [out=-25,in=-155] (defd3.-135);
+      \draw[purVecArrow1] (defd1) to [bend right=20] (defd0);
+      \draw[purVecArrow] (defd2) -- (defd0);
+      \draw[purVecArrow1] (defd3) to [bend left=20] (defd0);
+      %\draw[-latex,thick] (defd3.-80) to [bend left=20]  (defd0.-10);
+      %\draw[-latex,thick] (defd0.10) to [bend right=10]  (defd3.-100);
+      %\draw[-latex,thick] (defd1.-80) to [bend right=10]  (defd0.170);
+      %\draw[-latex,thick] (defd0.190) to [bend left=20]  (defd1.-100);
+      %\draw[-latex,thick] (defd2.-80) to [bend left=5]  (defd0.80);
+      %\draw[-latex,thick] (defd0.100) to [bend left=5]  (defd2.-100);
+      \begin{pgfonlayer}{back}
+        \draw[sys] ($(dex1.north west)+(-1.5,0.3)$) rectangle ($(dex3.south east)+(1.5,-.5)$);
+      \end{pgfonlayer}
+    \end{tikzpicture}
+  \end{center}
+  \vspace{-3ex}
+  \begin{itemize}
+    \item local nodes
+      \begin{itemize}
+        \item estimate the continuous state of the subsystems
+        \item select the optimal excitations 
+        \item send local likelihoods to the central node.
+      \end{itemize}
+    \item central node 
+      \begin{itemize}
+        \item generates the decisions
+        \item submits the respective model probabilities to the local nodes
+      \end{itemize}
+  \end{itemize}
+  %\begin{itemize}[<+->]
+    %%\item Combination of centralized and decentralized AFDs
+      %%\item State $\nth{\bar{\bfs}}_{k} \triangleq [\bfx^{\T}_{k}, \nth{\mu}_{k}]^{\T}$
+      %\item To obtain its estimate, the nodes must communicate individual estimates (the measurement models are known only by the corresponding nodes).
+      %\item The estimates are then fused (under unknown dependency).
+      %\item To achieve feasible Bellman function calculation, the Bellman function from the decentralized architecture is used.
+      %\item $\implies$ the input generator of decentralized architecture is used but it obtains better information by respecting the coupling
+  %\end{itemize}
+\end{frame}
+%\begin{frame}
+  %\frametitle{AFD for Distributed Architecture -- Algorithm }
+%\begin{algorithm}[H]
+%% input/ouput names
+%\SetKwInOut{Input}{Input}
+%\SetKwInOut{Output}{Output}
+
+%\caption{Distributed AFD algorithm.}
+%\Input{%
+  %{$\nth{\bfy}_{k}$} -- observation of $\nth{\Sigma}$ \\
+  %predictive estimate  of $\nth{\bfs}_{k}$ given by
+  %$p(\nth{\bfs}_k\vert\nth{\bfI}_0^{k-1})$
+%}
+%\Output{%
+  %{${\nth{d}_k}$} -- decision about the current model $\nth{\mu}_k$\\
+  %{${\nth{\bfu}_k}$} -- excitation input for  the current model
+  %$\nth{\Sigma}_k$\\
+  %predictive estimate  of $\nth{\bfs}_{k+1}$ given by
+  %$p(\nth{\bfs}_{k+1}\vert\nth{\bfI}_0^{k})$
+%}
+
+  %\BlankLine % blank line for spacing
+  
+  %% start of the pseudocode
+  %\textbf{Filtering:} Update the estimate $\nth{\bfs}_{k}$
+  %using $\nth{\bfy}_{k}$  to obtain
+  %$p(\nth{\bfs}_{k}\vert\bfI_0^{k-1},\nth{\bfy}_{k},\nth{\bfu}_{k-1})$.
+
+  %\textbf{Merging:} Merge the filtering PDF obtained in the previous step
+  %using GPB1 to $\nth{M}$ terms related to the models
+  %$\nth{\mu}_{k}$ and express the merged PDF using
+  %$\nth{\bfxi}_{k}$.
+
+  %\textbf{Communication:} Obtain the information states $\ith{\bfxi}_k$, $i\neq n$ from other nodes.
+
+  %\textbf{Fusion:} Obtain the mixture $p(\bfs_k\vert\bfI_0^k)$ and statistics $\bfxi_k$ related to $\Sigma$.
+
+  %\textbf{Decision generation:} Generate the
+  %decision $\nth{d}_k$ using $\bfxi_k$.
+
+  %\textbf{Input generation:} Generate the
+  %excitation input $\nth{\bfu}_k$ from $\nth{\bfxi}_k$.
+
+  %\textbf{Prediction:} Calculate $\nth{\bfs}_{k+1}$ prediction estimate using $\nth{\bfu}_k$ and $\bfxi_k$.
+%\end{algorithm}
+%\end{frame}
+\begin{frame}
+  \frametitle{Numerical Illustration -- System Specification}
+  Two weakly coupled multiple-model linear subsystems $\ith{\Sigma},\ i=1,2$
+\begin{align*}
+  \ith{\Sigma}:\quad \ith{\bfx}_{k+1} &= \ith{\bfA}_{(\ith{\mu}_{k})} \bfx_{k} +
+  \ith{B}_{(\ith{\mu}_{k})}\ith{u}_{k} +
+  \ith{G}_{(\ith{\mu}_{k})}\ith{w}_{k},\\
+  \ith{z}_k&=\ith{C}_{(\ith{\mu}_{k})}\ith{\bfx}_{k}+\ith{H}_{(\ith{\mu}_{k})}\ith{v}_k\\
+  %\iind{\Sigma}: \iind{\bfx}_{k+1} &=  \iind{\bfA}_{(\iind{\mu}_{k})} \bfx_{k} +
+  %\iind{B}_{(\iind{\mu}_{k})}\iind{u}_{k} +
+  %\ist{G}_{(\iind{\mu}_{k})}\iind{w}_{k},\\
+  %\iind{z}_k&=\iind{C}_{(\iind{\mu}_{k})}\iind{\bfx}_{k}+\iind{H}_{(\iind{\mu}_{k})}\iind{v}_k
+\end{align*}
+where both subsystems have two modes with the following matrices
+    \begin{center}
+      \scalebox{0.7}{\parbox{\textwidth}{%
+\begin{align*}
+  \ist{\Sigma}:\quad
+  \begin{cases}
+  \ist{\bfA}_{(1)} = [0.98\ 0.01], \ist{B}_{(1)} = 0.01,\ist{G}_{(1)}=\sqrt{0.003}, \ist{C}_{(1)}=1, \ist{H}_{(1)}=0.01,\\
+  \ist{\bfA}_{(2)}=[0.92\ 0.03], \ist{B}_{(2)}=0.08,\ist{G}_{(2)}=\sqrt{0.003}, \ist{C}_{(2)}=1, \ist{H}_{(2)}=0.01,\\
+  \end{cases}\\
+  \iind{\Sigma}:\quad
+  \begin{cases}
+  \iind{\bfA}_{(1)} = [0.02\ 0.93],\iind{B}_{(1)}= 0.07,\iind{G}_{(1)}=\sqrt{0.002}, \iind{C}_{(1)}=1, \iind{H}_{(1)}=0.01,\\
+  \iind{\bfA}_{(2)} = [0.01\ 0.93], \iind{B}_{(2)} = 0.09,\iind{G}_{(2)}=\sqrt{0.002} \iind{C}_{(2)}=1, \iind{H}_{(2)}=0.01.
+\end{cases}
+\end{align*}}}
+\end{center}
+\end{frame}
+\begin{frame}
+  \frametitle{Numerical Illustration --  Transition probabilities}
+\begin{center}
+  \begin{tabular}{rlllll}\toprule
+     & \multicolumn{4}{c}{$(\ist{\mu}_{k},\iind{\mu}_{k})$}\\
+    \cmidrule{2-5}
+    $(\ist{\mu}_{k+1},\iind{\mu}_{k+1})$ & (1,1) &  (1,2) & (2,1) & (2,2)\\\midrule 
+    (1,1) & 0.95 & 0.04 & 0.04 & 0.01 \\
+    (1,2) & 0.02 & 0.80 & 0.01 & 0.02 \\
+    (2,1) & 0.02 & 0.01 & 0.80 & 0.02 \\
+    (2,2) & 0.01 & 0.15 & 0.15 & 0.95 \\\bottomrule
+  \end{tabular}
+\end{center}
+%\begin{table}
+  %\definecolor{Gray}{gray}{0.85}
+  %\newcolumntype{a}{>{\columncolor{Gray}}c}
+  %\definecolor{Gray1}{gray}{0.85}
+  %\newcolumntype{b}{>{\columncolor{Gray1}}c}
+  %\extrarowheight=\aboverulesep
+  %\addtolength{\extrarowheight}{\belowrulesep}
+%\aboverulesep=0pt
+%\belowrulesep=0pt
+ %\begin{adjustbox}{width=.5\textwidth, totalheight=\textheight-2\baselineskip,keepaspectratio}
+  %\begin{tabular}{llllll}\toprule
+    %%\multicolumn{5}{c}{$\ist{\Sigma}$} & \phantom{a} & \multicolumn{5}{c}{$\iind{\Sigma}$} \\\cmidrule{1-5}\cmidrule{7-11}
+    %&&\multicolumn{4}{c}{$[\ist{\mu}_{k},\iind{\mu}_k]$}\\
+     %\cmidrule{3-6}
+    %&& [1,1] &[1,2] & [2,1] & [2,2]\\
+    %\midrule
+    %\multirow{2}{*}{$\ist{\mu}_{k+1}$}&
+    %1 & 0.99 & 0.9 & 0.1 & 0.02\\
+      %&2 & 0.01 & 0.1 & 0.9 & 0.98\\
+    %%\midrule
+      %%&\multicolumn{4}{c}{$[\ist{\mu}_{k},\iind{\mu}_k]$}\\
+      %%\cmidrule{2-5}
+      %\multirow{2}{*}{$\iind{\mu}_{k+1}$}%& [1,1] &[1,2] &[2,1] & [2,2]\\ 
+       %&1 & 0.99 &  0.05 & 0.9 & 0.01\\
+       %&2 & 0.01 &  0.95 & 0.1 & 0.99\\
+    %\bottomrule
+  %\end{tabular}
+%\end{adjustbox}
+%\begin{itemize}
+  %\item $p_{\ist{\bfw_{k}}}(\ist{\bfw_{k}})=p_{\iind{\bfw_{k}}}(\iind{\bfw_{k}})=\mcN\{0,1\}$
+  %\item $p_{\bfx_{0}}(\bfx_0)= \mcN\{\bfZero,0.01\cdot\bfIdent\}$,
+    %$P(\bfmu_{0}=[1\ 1]^{\T})=1$
+  %\item Admissible inputs of subsystems:  $\ist{\mcU}=\iind{\mcU} = \{-1,0,1\}$ 
+  %\item Detection cost function: $L^{\mathrm{d}}(\nth{\mu}_{k},\nth{d}_{k}) =
+    %1-\delta_{\nth{\mu}_{k},\nth{d}_{k}}$ ($\eta=0.98$).
+  %\item Value iteration over grid of $732\, 050$ discrete states in
+    %%$[-1:0.2:1]\times[-1:0.2:1]\times[0:2\cdot10^{-5}:2\cdot10^{-4}]\times[0:2\cdot10^{-5}:2\cdot10^{-4}]\times[0:0.02:1]$
+    %$[-1,1]\times[-1,1]\times[0,2\cdot10^{-4}]\times[0,2\cdot10^{-4}]\times[0,1]$
+%\end{itemize}
+%\end{table}
+\end{frame}
+%\begin{frame}
+  %\frametitle{Numerical Illustration  -- Architectures}
+  %\begin{itemize}
+    %\item decentralized architecture: ignoring  the coupling, two independent
+      %information state -- 5 dimensions
+    %\item distributed architecture: input signal generator of decentralized
+      %architecture, information state -- 11 dimensions
+      %\item centralized architecture: information state -- 22 dimensions
+        %$\implies$ infeasible Bellman function calculation
+  %\end{itemize}
+%\end{frame}
+\begin{frame}
+  \frametitle{Numerical illustration -- Performance Evaluation}
+  \begin{itemize}
+    \item  $10^5$ Monte Carlo simulations
+    \item Finite time horizon: $F=400$
+    \item PFD -- passive fault diagnosis with $u_k=\sign(\sin(k))$ 
+    \item Results:
+  \end{itemize}
+  \begin{center}
+    \begin{tabular}{llS[table-format=2.2]S[table-format=2.2]l}\toprule
+      &$\hat{J}$& $P_{\text{MD}}$ & $P_{\text{FA}}$ & $T_{\text{on-line}}$\\\midrule
+      decentralized AFD     & 2.876 & 12.94\si{\percent} & 10.08\si{\percent} &0.150 \si{\second}\\
+      distributed AFD     & 1.852 & 2.06\si{\percent} & 2.56\si{\percent} &0.421 \si{\second}\\
+      hierarchical AFD      & 1.691 & 1.97\si{\percent} & 2.30\si{\percent} &0.487 \si{\second}\\\bottomrule
+    \end{tabular} 
+  \end{center}
+\end{frame}
+\begin{frame}
+  \frametitle{Conclusion}
+  \begin{itemize}
+    \item The paper focused on the active fault diagnosis of a large scale stochastic system with coupled faults.
+    \item The system was represented using multiple models, which describe the fault-free and faulty behavior.
+    \item The off-line design was carried out in a decentralized architecture to achieve computational and storage tractability.
+    \item The on-line estimation used a hierarchical architecture.
+    \item The numerical example demonstrated improved detection quality of the proposed hierarchical architecture.
+  \end{itemize}
+\end{frame}
+\frame{\titlepage}
+\end{document}
+
